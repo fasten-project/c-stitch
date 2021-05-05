@@ -1,0 +1,133 @@
+{
+  "forge": "debian",
+  "release": "",
+  "product": "depshared",
+  "version": "0.1-1",
+  "source": "depshared",
+  "architecture": "amd64",
+  "generator": "cscout",
+  "timestamp": -1,
+  "depset": [
+    {
+      "product": "libc6",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "[2.2.5,)",
+      "dependency_type": "Depends",
+      "is_virtual": false,
+      "alternatives": []
+    },
+    {
+      "product": "transdep",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "",
+      "dependency_type": "Depends",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "build_depset": [
+    {
+      "product": "debhelper",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "[11~,)",
+      "dependency_type": "Build-Depends",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "undeclared_depset": [
+    {
+      "forge": "debian",
+      "product": "libgcc-8-dev",
+      "architectures": "",
+      "constraints": "",
+      "dependency_type": "",
+      "is_virtual": false,
+      "alternatives": []
+    },
+    {
+      "forge": "debian",
+      "product": "libc6-dev",
+      "architectures": "",
+      "constraints": "",
+      "dependency_type": "",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "graph": {
+    "externalCalls": [
+      [
+        "0",
+        "2",
+        {}
+      ]
+    ],
+    "internalCalls": [],
+    "resolvedCalls": []
+  },
+  "functions": {
+    "internal": {
+      "binaries": {
+        "libdepsharedb.so": {
+          "methods": {
+            "0": {
+              "metadata": {
+                "access": "public",
+                "defined": true,
+                "first": "3",
+                "last": "7",
+                "product": ""
+              },
+              "uri": "/libdepshareda.so;C/dep_shared_fun_a()",
+              "files": [
+                "src/depshareda.c"
+              ]
+            },
+            "1": {
+              "metadata": {
+                "access": "public",
+                "defined": true,
+                "first": "1",
+                "last": "4",
+                "product": ""
+              },
+              "uri": "/libdepsharedb.so;C/dep_shared_fun_b()",
+              "files": [
+                "src/depsharedb.c"
+              ]
+            }
+          }
+        }
+      },
+      "static_functions": {
+        "methods": {}
+      }
+    },
+    "external": {
+      "products": {},
+      "undefined": {
+        "methods": {
+          "2": {
+            "metadata": {
+              "access": "public",
+              "defined": false,
+              "first": "1",
+              "last": "1",
+              "product": "transdep"
+            },
+            "uri": "///libtransdep.so;C/trans_dep_fun()",
+            "files": [
+              "/usr/include/libtransdep.h"
+            ]
+          }
+        }
+      },
+      "static_functions": {}
+    }
+  },
+  "nodes": 3
+}

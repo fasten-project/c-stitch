@@ -1,0 +1,62 @@
+{
+  "forge": "debian",
+  "release": "",
+  "product": "depstatic",
+  "version": "0.1-1",
+  "source": "depstatic",
+  "architecture": "amd64",
+  "generator": "cscout",
+  "timestamp": -1,
+  "depset": [],
+  "build_depset": [
+    {
+      "product": "debhelper",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "[11~,)",
+      "dependency_type": "Build-Depends",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "undeclared_depset": [],
+  "graph": {
+    "externalCalls": [],
+    "internalCalls": [],
+    "resolvedCalls": []
+  },
+  "functions": {
+    "internal": {
+      "binaries": {
+        "libdepstatic.a": {
+          "methods": {
+            "0": {
+              "metadata": {
+                "access": "public",
+                "defined": true,
+                "first": "1",
+                "last": "4",
+                "product": ""
+              },
+              "uri": "/libdepstatic.a;C/dep_static_call_fun()",
+              "files": [
+                "src/depstatic.c"
+              ]
+            }
+          }
+        }
+      },
+      "static_functions": {
+        "methods": {}
+      }
+    },
+    "external": {
+      "products": {},
+      "undefined": {
+        "methods": {}
+      },
+      "static_functions": {}
+    }
+  },
+  "nodes": 1
+}

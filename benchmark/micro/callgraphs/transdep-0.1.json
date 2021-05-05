@@ -1,0 +1,91 @@
+{
+  "forge": "debian",
+  "release": "",
+  "product": "transdep",
+  "version": "0.1-1",
+  "source": "transdep",
+  "architecture": "amd64",
+  "generator": "cscout",
+  "timestamp": -1,
+  "depset": [
+    {
+      "product": "libc6",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "[2.2.5,)",
+      "dependency_type": "Depends",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "build_depset": [
+    {
+      "product": "debhelper",
+      "forge": "debian",
+      "architectures": [],
+      "constraints": "[11~,)",
+      "dependency_type": "Build-Depends",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "undeclared_depset": [
+    {
+      "forge": "debian",
+      "product": "libc6-dev",
+      "architectures": "",
+      "constraints": "",
+      "dependency_type": "",
+      "is_virtual": false,
+      "alternatives": []
+    },
+    {
+      "forge": "debian",
+      "product": "libgcc-8-dev",
+      "architectures": "",
+      "constraints": "",
+      "dependency_type": "",
+      "is_virtual": false,
+      "alternatives": []
+    }
+  ],
+  "graph": {
+    "externalCalls": [],
+    "internalCalls": [],
+    "resolvedCalls": []
+  },
+  "functions": {
+    "internal": {
+      "binaries": {
+        "libtransdep.so": {
+          "methods": {
+            "0": {
+              "metadata": {
+                "access": "public",
+                "defined": true,
+                "first": "1",
+                "last": "4",
+                "product": ""
+              },
+              "uri": "/libtransdep.so;C/trans_dep_fun()",
+              "files": [
+                "src/trans_dep.c"
+              ]
+            }
+          }
+        }
+      },
+      "static_functions": {
+        "methods": {}
+      }
+    },
+    "external": {
+      "products": {},
+      "undefined": {
+        "methods": {}
+      },
+      "static_functions": {}
+    }
+  },
+  "nodes": 1
+}
