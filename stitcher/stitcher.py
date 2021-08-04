@@ -27,7 +27,8 @@ import json
 from stitcher.cg import CallGraph
 
 class Stitcher:
-    def __init__(self, call_graph_paths):
+    def __init__(self, call_graph_paths, keep_unresolved=False):
+        self.keep_unresolved = keep_unresolved
         self.cgs = {}
 
         self.node_id_cnt = 0
@@ -59,22 +60,24 @@ class Stitcher:
                 add_edge(src, dst)
             for src, dst in cg.resolved_calls:
                 # TODO handle missing cases
-                dst = self._get_resolved_node(dst)
-                if not dst:
+                dst2 = self._get_resolved_node(dst)
+                if not dst2:
                     self.unresolved_cnt += 1
                     continue
-                add_edge(src, dst)
+                add_edge(src, dst2)
             for src, dst in cg.external_calls:
                 # TODO handle missing cases
-                dst = self._resolve(dst)
-                if not dst:
+                dst2 = self._resolve(dst)
+                if not dst2:
                     self.unresolved_cnt += 1
                     continue
-                dst = self._get_resolved_node(dst)
-                if not dst:
+                dst3 = self._get_resolved_node(dst2)
+                if not dst3 and not self.keep_unresolved:
                     self.unresolved_cnt += 1
                     continue
-                add_edge(src, dst)
+                elif self.keep_unresolved:
+                    dst3 = dst2
+                add_edge(src, dst3)
 
         for node, node_id in self.node_to_id.items():
             self.stitched["nodes"][node_id] = {"URI": node, "metadata": {}}

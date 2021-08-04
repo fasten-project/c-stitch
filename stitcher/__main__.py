@@ -42,13 +42,19 @@ def get_args():
               "If not given the graph will be printed in standard output."),
         default=None
     )
+    parser.add_argument(
+        "-k",
+        "--keep-unresolved",
+        help="Keep nodes of missing call graphs",
+        action="store_true"
+    )
     return parser.parse_args()
 
 
 def main():
     args = get_args()
 
-    stitcher = Stitcher(args.callgraphs)
+    stitcher = Stitcher(args.callgraphs, args.keep_unresolved)
     stitcher.stitch()
 
     output = json.dumps(stitcher.output(), indent=4)
