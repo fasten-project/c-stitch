@@ -61,3 +61,15 @@ class Node:
         if self.version:
             forge_product_version += "$" + self.version
         return "fasten://{}/{}".format(forge_product_version, self.entity)
+
+    def __str__(self):
+        return "{} ({}, {}, {}, {})".format(
+            repr(self.uri_str),
+            repr(self.product),
+            repr(self.version),
+            repr(self.metadata),
+            repr(self.entity)
+        )
+
+    def __repr__(self):
+        return self.__str__()
