@@ -126,6 +126,11 @@ class Stitcher:
                     )
                 self.cgs[cg["product"]] = CallGraph(cg)
                 self.dependencies.update(self.cgs[cg["product"]].dependencies)
+    
+    def parse_cg(self, cg_json):
+        if not self.cgs.get(cg_json["product"], None):
+            self.cgs[cg_json["product"]] = CallGraph(cg_json)
+
 
     def _err_and_exit(self, msg):
         print(msg)

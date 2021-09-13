@@ -26,7 +26,7 @@ import json
 import argparse
 
 from stitcher.stitcher import Stitcher
-
+from stitcher.api import deploy
 
 def get_args():
     parser = argparse.ArgumentParser("Stitch C-Debian call graphs")
@@ -48,12 +48,23 @@ def get_args():
         help="Keep nodes of missing call graphs",
         action="store_true"
     )
+    parser.add_argument(
+    "-a",
+    "--api",
+    action="store_true",
+    help="Deploy the server",
+    default=None
+    )
     return parser.parse_args()
 
 
 def main():
     args = get_args()
 
+    if args.api:
+        deploy()
+        return
+    
     stitcher = Stitcher(args.callgraphs, args.keep_unresolved)
     stitcher.stitch()
 
