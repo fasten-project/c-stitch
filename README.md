@@ -106,3 +106,36 @@ The `out.json` file should contain the following output:
     }
 }
 ```
+
+## Micro-service
+
+Deploy a micro-service that exposes a REST API for stitching C call-graphs.
+
+```bash
+docker build -f Dockerfile -t c-stitch-api .
+docker run -p 5001:5000 c-stitch-api
+```
+
+* Request format
+
+```
+url: http://localhost:5001/stitch
+parameter: {"product1": {...}, "product2": {...}}
+```
+
+* Example request using curl:
+
+```bash
+echo "{ \
+    \"depshared-0.1\": $(cat benchmark/micro/callgraphs/depshared-0.1.json), \
+    \"depstatic-0.1\": $(cat benchmark/micro/callgraphs/depstatic-0.1.json), \
+    \"example-0.1\": $(cat benchmark/micro/callgraphs/example-0.1.json), \
+    \"transdep-0.1\": $(cat benchmark/micro/callgraphs/transdep-0.1.json) \
+}" > test.json
+
+curl -X POST \
+  -H "Content-type: application/json" \
+  -H "Accept: application/json" \
+  -d @test.json \
+  "http://localhost:5001/stitch"
+```
